@@ -2,16 +2,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer">-->
+    <script type="text/javascript" src=" assets/script/script.js"></script>
+    <title>CHRIST University Feedback Form</title>
 </head>
 
 <body>
-
-    some content here...
-
+    <div class="container">
+        <div class="header">
+            <h1>CHRIST University Feedback Form</h1>
+        </div>
+    </div>
+    <form action="" class="form">
+        <div class="form-set">
+            <label for="name" class="name">Name : </label>
+            <br />
+            <input type="text" id="name" placeholder="enter your name*" required="required" />
+        </div>
+        <br />
+        <div class="form-set">
+            <label for="email" class="email">Email : </label>
+            <br />
+            <input type="email" id="email" placeholder="enter your email*" required="required" />
+        </div>
+        <br />
+        <div class="form-set">
+            <label for="phone" class="phone">Phone number : </label>
+            <br />
+            <input type="text/number" id="phone" placeholder="enter your phone number*" required="required" />
+        </div>
+        <br />
+        <div class="form-set">
+            <label for="address" class="address">Address : </label>
+            <br />
+            <textarea height="5" width="50" id=" address " placeholder="enter your address*" required="required "></textarea>
+        </div>
+        <br />
+        <div class="form-set">
+            <label for="q1" class="q1">Q1. What are the things that you like about the College ? </label>
+            <br />
+            <ol id="q1" type="a">
+                <li><input type="checkbox" name="q1" />Student</li>
+                <li><input type="checkbox" name="q1" />Location</li>
+                <li><input type="checkbox" name="q1" />Campus</li>
+                <li><input type="checkbox" name="q1" />Atmosphere</li>
+                <li><input type="checkbox" name="q1" />Dorm Rooms</li>
+                <li><input type="checkbox" name="q1" />Sports</li>
+            </ol>
+            <br />
+        </div>
+        <br />
+        <div class="form-set">
+            <label class="q1">Q2. How did you become interested in the University ? </label>
+            <br />
+            <input type="radio" id="q2" name="q2" />Friends
+            <input type="radio" id="q2" name="q2" />Television
+            <input type="radio" id="q2" name="q2" />Internet
+            <input type="radio" id="q2" name="q2" />Other
+            <br />
+        </div>
+        <br />
+    </form>
 </body>
 
 </html>
