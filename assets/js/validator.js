@@ -5,6 +5,7 @@ let email = document.getElementById('email');
 let phn = document.getElementById('phone');
 let pass = document.getElementById('password');
 let cpass = document.getElementById('cnf-password');
+let addrs = document.getElementById('address');
 let span = document.getElementsByTagName('span');
 let lock = 0;
 let flag = 0;
@@ -169,7 +170,13 @@ pass.onkeyup = function() {
         span[3].innerText = "Weak Password";
         span[3].style.color = "tomato";
     }
-
+    if (cpass.value === pass.value) {
+        span[4].innerText = "Passwords match";
+        span[4].style.color = "lime";
+    } else {
+        span[4].innerText = "Passwords do not match";
+        span[4].style.color = "tomato";
+    }
     if (pass.value === "") {
         span[3].innerText = "Password CANNOT remain BLANK";
         span[3].style.color = "yellow";
@@ -177,10 +184,6 @@ pass.onkeyup = function() {
 }
 
 //validate confirm password
-cpass.onkeypress = function() {
-
-}
-
 cpass.onkeyup = function() {
     if (cpass.value === "") {
         span[4].innerText = "Confirm Password CANNOT remain BLANK"
@@ -193,3 +196,19 @@ cpass.onkeyup = function() {
         span[4].style.color = "tomato";
     }
 }
+
+//validate address
+addrs.onkeypress = function(evt) {
+    if ((evt.keyCode || evt.charCode) === 8) {
+        evt.allowDefault();
+    }
+    if (addrs.value.length + 1 >= 130) {
+        evt.preventDefault();
+    }
+}
+
+//addrs.onkeyup = function(evt) {
+//    if (0 < addrs.value.length + 1 === 50) {
+//        evt.preventDefault();
+//    }
+//}
