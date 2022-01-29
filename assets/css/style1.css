@@ -197,9 +197,11 @@ textarea:focus {
 
 @media only screen and (max-width: 768px) {
     .container {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
+        width: 90%;
+        height: 90%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 10%;
         border-radius: 0px;
     }
 }
