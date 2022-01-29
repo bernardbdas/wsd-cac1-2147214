@@ -54,20 +54,25 @@ email.onkeypress = function(evt) {
     var inp = String.fromCharCode(evt.which); //to get the currently pressed char from keyboard
     const rgx1 = /[^a-z0-9@._]/i;
     const rgx2 = /[A-Z]/;
-    const rgx3 = /^([0-9]+)@$/;
+    const rgx3 = /^([0-9]+)$/;
 
     if (rgx1.test(inp)) {
         span[1].innerText = "Invalid Character entered";
         span[1].style.color = "tomato";
         evt.preventDefault(); //to lock the keyboard
     }
-    if (rgx2.test(email.value)) {
+    if (rgx2.test(inp)) {
         span[1].innerText = "Email Address is ALWAYS lowercase";
         span[1].style.color = "tomato";
         evt.preventDefault(); //to lock the keyboard
     }
-    if (rgx3.test(email.value)) {
+    if (inp === "@" && rgx3.test(email.value)) {
         span[1].innerText = "Email Address must NOT contain ONLY numbers";
+        span[1].style.color = "tomato";
+        evt.preventDefault(); //to lock the keyboard
+    }
+    if (inp === "@" && (/[@]/).test(email.value)) {
+        span[1].innerText = "Email Address CANNOT contain '@' more than once";
         span[1].style.color = "tomato";
         evt.preventDefault(); //to lock the keyboard
     }
