@@ -15,6 +15,7 @@
     --bg-img: url('..//img/form-bg-img1.jpg');
     --grad1: linear-gradient(to left, rgba(124, 201, 23, 0.6), rgba(15, 193, 216, 0.6));
     --grad2: linear-gradient(to left, rgba(250, 118, 42, 0.7), rgba(87, 108, 202, 0.6));
+    --grad2: linear-gradient(to left, #ff1e1eb3, rgba(87, 108, 202, 0.6));
 }
 
 
@@ -72,7 +73,8 @@ body {
 
 label {
     font-family: var(--txt-font);
-    font-size: 20px;
+    font-size: 30px;
+    text-transform: uppercase;
 }
 
 .form-set input {
@@ -82,7 +84,8 @@ label {
     border: 2px solid rgb(22, 230, 212);
     margin: 5px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 16px;
+    font-family: var(--txt-font);
 }
 
 .form-set input:focus {
