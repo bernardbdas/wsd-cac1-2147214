@@ -45,6 +45,7 @@ body {
     background-attachment: fixed;
     opacity: 0.7;
     top: 0;
+    bottom: 100%;
     position: fixed;
 }
 
@@ -193,3 +194,18 @@ textarea:focus {
 
 
 /* end-of-css-for-footer */
+
+@media screen and (min-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    #leftsidebar {
+        width: 200px;
+        float: left;
+    }
+    #main {
+        margin-left: 216px;
+    }
+}
