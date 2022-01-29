@@ -19,12 +19,16 @@ let flag = 0;
 
 //validate username
 uname.onkeypress = function(evt) {
-    const rgx1 = /[^a-zA-Z\s]/;
+    const rgx1 = /[^a-z.\s]/i;
+    const rgx2 = /[a-z.\s]{25}/i;
     var inp = String.fromCharCode(evt.which); //to get the currently pressed char from keyboard
     if (rgx1.test(inp)) {
         span[0].innerText = "Name CANNOT contain numbers or special characters";
         span[0].style.color = "tomato";
         evt.preventDefault(); //to lock numeric and special char input
+    } else
+    if (rgx2.test(uname.value)) {
+        evt.preventDefault();
     }
     if ((evt.keyCode || evt.charCode) === 8) {
         evt.allowDefault();
@@ -32,12 +36,12 @@ uname.onkeypress = function(evt) {
 }
 
 
-uname.onkeyup = function() {
+uname.onkeyup = function(evt) {
+    const rgx1 = /[a-z.\s]{3,}/i;
     if (uname.value === "") {
         span[0].innerText = "Name CANNOT remain BLANK";
         span[0].style.color = "yellow";
-    }
-    if (0 < (uname.value.length) < 3) {
+    } else if (!rgx1.test(uname.value)) {
         span[0].innerText = "Name must contain ATLEAST 3 characters";
         span[0].style.color = "tomato";
     } else {
@@ -49,17 +53,25 @@ uname.onkeyup = function() {
 //validate email
 email.onkeypress = function(evt) {
     var inp = String.fromCharCode(evt.which); //to get the currently pressed char from keyboard
-    const rgx1 = /[^a-z0-9@._]/i;
+    const rgx1 = /[^\.\_a-z0-9@]/;
     const rgx2 = /[A-Z]/;
     const rgx3 = /^([0-9]+)$/;
+    const rgx4 = /[\.\_a-z0-9@]{20}/;
+    const rgx5 = /@cdpl.in$/;
+    const rgx6 = /@cdpl.com$/;
+    const rgx7 = /@cdpl.co.in$/;
 
-    if (rgx1.test(inp)) {
-        span[1].innerText = "Invalid Character entered";
-        span[1].style.color = "tomato";
+
+    if (rgx4.test(email.value) || rgx5.test(email.value) || rgx6.test(email.value) || rgx7.test(email.value)) { //email cannot be more than 30 chars
         evt.preventDefault(); //to lock the keyboard
     }
     if (rgx2.test(inp)) {
         span[1].innerText = "Email Address is ALWAYS lowercase";
+        span[1].style.color = "tomato";
+        evt.preventDefault(); //to lock the keyboard
+    }
+    if (rgx1.test(inp)) {
+        span[1].innerText = "Invalid Character entered";
         span[1].style.color = "tomato";
         evt.preventDefault(); //to lock the keyboard
     }
@@ -99,14 +111,34 @@ email.onkeyup = function() {
 
 
 //validate phone number
-function validatePhone(evt) {
-    const validPhn = /^[0-9]{10}$/;
-    if (validPhn.test(phnVal)) {
-        span[0].innerText = "Valid Phone number";
-        span[0].style.color = "lime";
+phn.onkeypress = function(evt) {
+    let inp = String.fromCharCode(evt.which);
+
+    const rgx2 = /[^0-9]/;
+    const rgx3 = /[0-9\b]{10}/;
+    if (rgx3.test(phn.value)) {
+        span[2].innerText = "Valid Phone number";
+        span[2].style.color = "lime";
+        evt.preventDefault();
+    } else if (rgx2.test(inp)) {
+        span[2].innerText = "Phone Number can contain numbers ONLY";
+        span[2].style.color = "tomato";
+        evt.preventDefault();
     } else {
-        span[0].innerText = "Invalid Phone number";
-        span[0].style.color = "tomato";
+        span[2].innerText = "Invalid Phone number";
+        span[2].style.color = "tomato";
+    }
+}
+
+phn.onkeyup = function(evt) {
+    const rgx1 = /^[0-9]{8,10}$/;
+    if (phn.value === "") {
+        span[2].innerText = "Phone Number CANNOT remain BLANK";
+        span[2].style.color = "yellow";
+    }
+    if (rgx1.test(phn.value)) {
+        span[2].innerText = "Valid Phone number";
+        span[2].style.color = "lime";
     }
 }
 
