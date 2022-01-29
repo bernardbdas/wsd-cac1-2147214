@@ -32,20 +32,17 @@ uname.onkeypress = function(evt) {
 }
 
 
-uname.onkeydown = function() {
-    if (0 < uname.value.length < 3) {
+uname.onkeyup = function() {
+    if (uname.value === "") {
+        span[0].innerText = "Name CANNOT remain BLANK";
+        span[0].style.color = "yellow";
+    }
+    if (0 < (uname.value.length) < 3) {
         span[0].innerText = "Name must contain ATLEAST 3 characters";
         span[0].style.color = "tomato";
     } else {
         span[0].innerText = "VALID Name";
         span[0].style.color = "lime";
-    }
-}
-
-uname.onkeyup = function() {
-    if (uname.value === "") {
-        span[0].innerText = "Name CANNOT remain BLANK";
-        span[0].style.color = "yellow";
     }
 }
 

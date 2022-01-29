@@ -94,8 +94,8 @@ label {
 }
 
 #chk-box {
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     border-radius: 30px;
     margin: 10px;
 }
@@ -195,9 +195,10 @@ textarea:focus {
 
 /* end-of-css-for-footer */
 
-@media screen and (min-width: 480px) {
+@media screen and (width: 4px) {
     .container {
         width: 100%;
+        height: 100%;
         padding: 0px;
         margin: 0px;
     }
