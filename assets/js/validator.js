@@ -4,7 +4,7 @@ let uname = document.getElementById('name');
 let email = document.getElementById('email');
 let phn = document.getElementById('phone');
 let pass = document.getElementById('password');
-let cpass = document.getElementById('cnf-pass');
+let cpass = document.getElementById('cnf-password');
 let span = document.getElementsByTagName('span');
 let lock = 0;
 let flag = 0;
@@ -56,10 +56,10 @@ email.onkeypress = function(evt) {
     const rgx1 = /[^\.\_a-z0-9@]/;
     const rgx2 = /[A-Z]/;
     const rgx3 = /^([0-9]+)$/;
-    const rgx4 = /[\.\_a-z0-9@]{20}/;
-    const rgx5 = /@cdpl.in$/;
-    const rgx6 = /@cdpl.com$/;
-    const rgx7 = /@cdpl.co.in$/;
+    const rgx4 = /[\.\_a-z0-9@]{35}/;
+    const rgx5 = /@christuniversity.in$/;
+    const rgx6 = /@mca.christuniversity.in$/;
+    const rgx7 = /@mda.christuniversity.in$/;
 
 
     if (rgx4.test(email.value) || rgx5.test(email.value) || rgx6.test(email.value) || rgx7.test(email.value)) { //email cannot be more than 30 chars
@@ -94,9 +94,9 @@ email.onkeypress = function(evt) {
 email.onkeyup = function() {
     //const validMail1 = /^([\.\_a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]){2,8}$/;
     //const validMail2 = /^([\.\_a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]){2,3}\.[a-zA-Z]{1,3}$/;
-    const rgx1 = /^([\.\_a-z0-9]+)@cdpl.in$/;
-    const rgx2 = /^([\.\_a-z0-9]+)@cdpl.com$/;
-    const rgx3 = /^([\.\_a-z0-9]+)@cdpl.co.in$/;
+    const rgx1 = /^([\.\_a-z0-9]+)@christuniversity.in$/;
+    const rgx2 = /^([\.\_a-z0-9]+)@mca.christuniversity.in$/;
+    const rgx3 = /^([\.\_a-z0-9]+)@mda.christuniversity.in$/;
     if (email.value === "") {
         span[1].innerText = "Email Address CANNOT remain BLANK";
         span[1].style.color = "yellow";
@@ -130,7 +130,7 @@ phn.onkeypress = function(evt) {
     }
 }
 
-phn.onkeyup = function(evt) {
+phn.onkeyup = function() {
     const rgx1 = /^[0-9]{8,10}$/;
     if (phn.value === "") {
         span[2].innerText = "Phone Number CANNOT remain BLANK";
@@ -144,30 +144,43 @@ phn.onkeyup = function(evt) {
 
 //validate password
 pass.onkeydown = function() {
-    const validPass1 = /[a-zA-Z0-9~`!@#$%^&*()-_+={}[|;:"<>,./ ?] /;
-    const validPass2 = /\B[a-zA-Z0-9\W]/;
-    if (validPass1.test(passVal) && validPass2.test(passVal)) {
-        span[0].innerText = "Strong Password";
-        span[0].style.color = "lime";
-    } else if (passVal === "") {
-        span[0].innerText = "Password cannot remain Blank"
-        span[0].style.color = "tomato"
-    } else {
-        span[0].innerText = "Weak Password";
-        span[0].style.color = "tomato";
+    const rgx1 = /[a-z]{1,}/;
+    const rgx2 = /[A-Z]{1,}/;
+    const rgx3 = /[0-9]{1,}/;
+    const rgx4 = /[~`!@#\$%\^&*()-_+={}[]|\;:"<>,.\/\?]{ 1, }/;
+    const rgx5 = /[^a-z]/;
+
+    if (rgx1.test(pass.value) || rgx2.test(pass.value) || rgx3.test(pass.value)) {
+        span[3].innerText = "Weak Password";
+        span[3].style.color = "tomato";
+        if (rgx4.test(pass.value)) {
+            span[3].innerText = "Strong Password";
+            span[3].style.color = "yellow";
+        }
+    }
+}
+
+pass.onkeyup = function() {
+    if (pass.value === "") {
+        span[3].innerText = "Password CANNOT remain BLANK"
+        span[3].style.color = "yellow"
     }
 }
 
 //validate confirm password
 cpass.onkeydown = function() {
-    if (cpassVal === passVal) {
-        span[0].innerText = "Passwords match";
-        span[0].style.color = "lime";
-    } else if (cpassVal === "") {
-        span[0].innerText = "Password cannot remain Blank"
-        span[0].style.color = "tomato"
+    if (cpass.value === pass.value) {
+        span[4].innerText = "Passwords match";
+        span[4].style.color = "lime";
     } else {
-        span[0].innerText = "Passwords do not match";
-        span[0].style.color = "lime";
+        span[4].innerText = "Passwords do not match";
+        span[4].style.color = "tomato";
+    }
+}
+
+cpass.onkeyup = function() {
+    if (cpass.value === "") {
+        span[4].innerText = "Confirm Password CANNOT remain BLANK"
+        span[4].style.color = "yellow"
     }
 }
