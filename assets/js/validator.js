@@ -6,6 +6,8 @@ let phn = document.getElementById('phone');
 let pass = document.getElementById('password');
 let cpass = document.getElementById('cnf-password');
 let addrs = document.getElementById('address');
+let q1 = document.getElementById('chk-box');
+let q2 = document.getElementsByName('q2')
 let span = document.getElementsByTagName('span');
 let lock = 0;
 let flag = 0;
@@ -207,8 +209,23 @@ addrs.onkeypress = function(evt) {
     }
 }
 
-//addrs.onkeyup = function(evt) {
-//    if (0 < addrs.value.length + 1 === 50) {
-//        evt.preventDefault();
-//    }
-//}
+addrs.onkeyup = function(evt) {
+    if (addrs.value === "") {
+        span[5].innerText = "Address CANNOT remain BLANK";
+        span[5].style.color = "yellow";
+    }
+}
+
+//validate question 1
+q1.onclick = function() {}
+
+//validate question 2
+q2.onclick = function() {
+    for (i = 0; i < 4; i++) {
+        if (q2[i].checked === true) {
+            span[7].innerText = q2[i].value;
+            span[7].style.color = "yellow";
+            break;
+        }
+    }
+}

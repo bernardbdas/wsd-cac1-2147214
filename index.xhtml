@@ -58,6 +58,7 @@
                 <label for="address" class="address">Address : </label>
                 <br />
                 <textarea id="address" placeholder="enter your address*" required="required "></textarea>
+                <span></span>
             </div>
             <br />
             <div class="form-set">
@@ -79,16 +80,17 @@
                 <label class="q2" style="text-transform: none;">Q2. How did you become interested in this institute ? </label>
                 <br />
                 <ul id="q2">
-                    <input type="radio" id="rad-btn" />Friends<br/>
-                    <input type="radio" id="rad-btn" />Television<br />
-                    <input type="radio" id="rad-btn" />Internet<br />
-                    <input type="radio" id="rad-btn" />Other<br />
-                    <span></span>
+                    <input type="radio" name="q2" id="rad-btn" value="Friends" />Friends<br/>
+                    <input type="radio" name="q2" id="rad-btn" value="Television" />Television<br />
+                    <input type="radio" name="q2" id="rad-btn" value="Internet" />Internet<br />
+                    <input type="radio" name="q2" id="rad-btn" value="Other" />Other<br />
+                    <textarea id="txt-oth" placeholder="write your answer*"></textarea>
                 </ul>
+                <span></span>
                 <br />
             </div>
             <br />
-            <button class="sub-btn" type="submit">Submit Form</button>
+            <button class="sub-btn" type="submit" onclick="onSubmit()">Submit Form</button>
         </form>
     </div>
 
