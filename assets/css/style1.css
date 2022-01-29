@@ -120,6 +120,7 @@ textarea {
     width: 100%;
     padding: 20px;
     border: 3px solid rgb(22, 230, 212);
+    border-radius: 10px;
     margin: 5px;
     font-size: 16px;
     font-family: var(--txt-font);
@@ -128,13 +129,11 @@ textarea {
 .form-set input {
     height: 30px;
     margin: 5px;
-    border-radius: 10px;
 }
 
 .form-set textarea {
     height: 100px;
     resize: none;
-    border-radius: 4px;
 }
 
 .form-set input:focus,

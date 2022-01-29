@@ -143,44 +143,53 @@ phn.onkeyup = function() {
 }
 
 //validate password
-pass.onkeydown = function() {
-    const rgx1 = /[a-z]{1,}/;
-    const rgx2 = /[A-Z]{1,}/;
-    const rgx3 = /[0-9]{1,}/;
-    const rgx4 = /[~`!@#\$%\^&*()-_+={}[]|\;:"<>,.\/\?]{ 1, }/;
-    const rgx5 = /[^a-z]/;
+pass.onkeypress = function() {
 
-    if (rgx1.test(pass.value) || rgx2.test(pass.value) || rgx3.test(pass.value)) {
+    //if (cpass.value === pass.value) {
+    //    span[4].innerText = "Passwords match";
+    //    span[4].style.color = "lime";
+    //}
+}
+pass.onkeyup = function() {
+    const rgx1 = /[a-z]/;
+    const rgx2 = /[A-Z]/;
+    const rgx3 = /[0-9]/;
+    const rgx4 = /[~`!@#\$%\^&*()-_+={}[\]|\;:"<>,.\/\?]{2,}/;
+    const rgx5 = /\B[a-z]{4,}/i;
+    const rgx6 = /\B[0-9]{2,}/;
+
+    if ((rgx1.test(pass.value) && rgx2.test(pass.value) && rgx3.test(pass.value)) && rgx4.test(pass.value) && (pass.value.length + 1 > 8)) {
+        span[3].innerText = "Strong Password";
+        span[3].style.color = "yellow";
+        if (rgx5.test(pass.value) && rgx6.test(pass.value) && (pass.value.length + 1 > 12)) {
+            span[3].innerText = "Hard to guess";
+            span[3].style.color = "lime";
+        }
+    } else {
         span[3].innerText = "Weak Password";
         span[3].style.color = "tomato";
-        if (rgx4.test(pass.value)) {
-            span[3].innerText = "Strong Password";
-            span[3].style.color = "yellow";
-        }
     }
-}
 
-pass.onkeyup = function() {
     if (pass.value === "") {
-        span[3].innerText = "Password CANNOT remain BLANK"
-        span[3].style.color = "yellow"
+        span[3].innerText = "Password CANNOT remain BLANK";
+        span[3].style.color = "yellow";
     }
 }
 
 //validate confirm password
-cpass.onkeydown = function() {
-    if (cpass.value === pass.value) {
-        span[4].innerText = "Passwords match";
-        span[4].style.color = "lime";
-    } else {
-        span[4].innerText = "Passwords do not match";
-        span[4].style.color = "tomato";
-    }
+cpass.onkeypress = function() {
+
 }
 
 cpass.onkeyup = function() {
     if (cpass.value === "") {
         span[4].innerText = "Confirm Password CANNOT remain BLANK"
         span[4].style.color = "yellow"
+    } else if (cpass.value === pass.value) {
+        span[4].innerText = "Passwords match";
+        span[4].style.color = "lime";
+    } else {
+        span[4].innerText = "Passwords do not match";
+        span[4].style.color = "tomato";
     }
 }
