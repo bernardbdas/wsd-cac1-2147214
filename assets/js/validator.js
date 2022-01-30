@@ -12,14 +12,6 @@ let span = document.getElementsByTagName('span');
 let lock = 0;
 let flag = 0;
 
-//locking numeric chars
-//invalidChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-//uname.addEventListener("keydown", function() {
-//    if (invalidChars.includes(uname.value)) {
-//        uname.preventDefault();
-//    }
-//});
-
 //validate username
 uname.onkeypress = function(evt) {
     const rgx1 = /[^a-z.\s]/i;
@@ -146,13 +138,6 @@ phn.onkeyup = function() {
 }
 
 //validate password
-pass.onkeypress = function() {
-
-    //if (cpass.value === pass.value) {
-    //    span[4].innerText = "Passwords match";
-    //    span[4].style.color = "lime";
-    //}
-}
 pass.onkeyup = function() {
     const rgx1 = /[a-z]/;
     const rgx2 = /[A-Z]/;
