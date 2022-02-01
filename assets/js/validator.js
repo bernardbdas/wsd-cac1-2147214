@@ -7,10 +7,9 @@ let pass = document.getElementById('password');
 let cpass = document.getElementById('cnf-password');
 let addrs = document.getElementById('address');
 let q1 = document.getElementById('chk-box');
-let q2 = document.getElementsByName('q2')
+let q2 = document.getElementsByName('q2');
 let span = document.getElementsByTagName('span');
-let lock = 0;
-let flag = 0;
+
 
 //validate username
 uname.onkeypress = function(evt) {
